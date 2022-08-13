@@ -20,6 +20,15 @@ extern "C" _TOOL_DLL_API float add_Float(float, float);
 extern "C" _TOOL_DLL_API int sub_Int(int, int);
 extern "C" _TOOL_DLL_API float sub_Float(float, float);
 
+//DHT11 ½á¹¹Ìå
+struct _TOOL_DLL_API TempHum
+{
+	float temp = 0;
+	float hum = 0;
+};
+
+bool _TOOL_DLL_API getTempHum(char* cstr, TempHum* dht);
+
 class _TOOL_DLL_API Serial_Miku {
 private:
 	HANDLE hCom;

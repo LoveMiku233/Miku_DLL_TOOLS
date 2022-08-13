@@ -23,7 +23,20 @@ float sub_Float(float a, float b) {
 	return a - b;
 }
 
-/********************************************/
+
+//×ª»»×Ö·û´®Îªdht11×Ö·û´®
+bool getTempHum(char* cstr, TempHum* dht) {
+	//{Temp:26.0,Hum:58.0}
+	string str = cstr;
+	int cnt = str.find("Temp");
+	dht->temp = (float)atof(str.substr(cnt + 5, str.find(",") - cnt - 5).c_str());
+	cnt = str.find("Hum");
+	dht->hum = (float)atof(str.substr(cnt + 4, str.find('}') - cnt - 4).c_str());
+	return true;
+}
+
+
+/*************´®¿Ú*********************/
 bool Serial_Miku::openSpy(string name, unsigned char baud_rate, unsigned char parity, unsigned char byte_size, unsigned char stop_bits) {
 	if (!openSpy(name)) {
 		return false;
